@@ -1,0 +1,109 @@
+/* Обнуляем отступы и делаем черный фон */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* чтобы ничего не вылезало за экран */
+}
+
+/* Главный контейнер — всё по центру */
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    z-index: 10;
+}
+
+/* Сердце в центре */
+.heart {
+    font-size: 120px;
+    color: #ff3366;
+    animation: pulse 1.5s ease-in-out infinite;
+    user-select: none;
+    transition: transform 0.3s;
+}
+
+/* Пульсация сердца */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Текст "I love you" */
+.love-text {
+    color: #ff6699;
+    font-size: 28px;
+    font-weight: bold;
+    min-height: 50px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Кнопка */
+.love-btn {
+    background: linear-gradient(135deg, #ff3366, #ff6699);
+    color: white;
+    border: none;
+    padding: 18px 50px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(255, 51, 102, 0.3);
+    letter-spacing: 1px;
+}
+
+.love-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(255, 51, 102, 0.6);
+}
+
+.love-btn:active {
+    transform: scale(0.95);
+}
+
+/* 🎈 Летающие сердца (появляются динамически) */
+.flying-heart {
+    position: fixed;
+    font-size: 30px;
+    pointer-events: none;
+    animation: flyUp 3s ease-out forwards;
+    z-index: 999;
+    opacity: 1;
+}
+
+@keyframes flyUp {
+    0% {
+        transform: translateY(0) scale(0.5) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-800px) scale(1.5) rotate(720deg);
+        opacity: 0;
+    }
+}
