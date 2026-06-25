@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Arial', sans-serif;
-    overflow: hidden; /* чтобы ничего не вылезало за экран */
+    overflow: hidden;
 }
 
 /* Главный контейнер — всё по центру */
@@ -24,6 +24,7 @@ body {
     gap: 30px;
     padding: 20px;
     z-index: 10;
+    position: relative;
 }
 
 /* Сердце в центре */
@@ -87,7 +88,40 @@ body {
     transform: scale(0.95);
 }
 
-/* 🎈 Летающие сердца (появляются динамически) */
+/* 🌧️ Дождь из букв - теперь летят сверху вниз по всему экрану */
+.rain-drop {
+    position: fixed;
+    color: #ff6699;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    animation: rainDrop linear forwards;
+    text-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
+    font-family: 'Arial', sans-serif;
+    /* Стартуем с самого верха */
+    top: -30px;
+}
+
+@keyframes rainDrop {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.8);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+        /* Летим до самого низа экрана */
+        transform: translateY(calc(100vh + 100px)) scale(1.1);
+    }
+}
+
+/* ❤️ Летающие сердца (запускаются по кнопке) */
 .flying-heart {
     position: fixed;
     font-size: 30px;
